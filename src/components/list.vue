@@ -1,18 +1,18 @@
 <template>
   <div>
     <ul class="todo-list column">
-      <li class="todo-item row row-space-between" v-for='todo in todos'>
+      <li class="todo-item row row-space-between" v-for='(todo, index) in todos'>
         <div class="row custom-checkbox">
           <input type='checkbox'/>
           <label>{{ todo.text }}</label>
         </div>
-        <button class="delete-button" v-on:click="deleteTask">
+        <button class="delete-button" v-on:click="deleteTask(index)">
           <img src="../assets/images/delete.svg"/>
         </button>
       </li>
     </ul>
     <div class="add-input">
-      <input type='text' placeholder='Enter a new task'/>
+      <input type='text' v-model="newTask" placeholder='Enter a new task'/>
       <button v-on:click='addTask()'>
         <img src="../assets/images/plus.svg"/>
       </button>
@@ -44,6 +44,7 @@
           { text: 'Learn Vue' },
           { text: 'Build something awesome' },
         ],
+        newTask: '',
       };
     },
 
@@ -51,15 +52,14 @@
      * The computed properties that the component can use.
      */
     methods: {
-      deleteTask: () => {
-        this.todos.push({
-          text: 'Hi',
-        });
+      deleteTask(index) {
+        this.todos.splice(index, 1);
       },
-      addTask: (input) => {
+      addTask() {
         this.todos.push({
-          text: input,
+          text: this.newTask,
         });
+        this.newTask = null;
       },
     },
   };
