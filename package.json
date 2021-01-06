@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/petervmeijgaard/vue-2-boilerplate#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
     "vue": "^2.4.2",
     "vue-i18n": "^7.2.0",
